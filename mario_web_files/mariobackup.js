@@ -116,19 +116,11 @@ function draw() {
     }
 
     /* TODO:
-     * TODO: Capture keycodes for L (76) and R(82). In each, set a timeout that calls a function
+     * TODO: Capture keycodes for L and R. In each, set a timeout that calls a function
      * TODO: to face Mario forward after 200 ms. HINT: setTimeout(function, timeInMilliSecs)
      */
     document.body.onkeyup = function(e) {  // listen for a key
-				l = event || window.event;
-				var keycodel = l.charCode || l.keyCode;
-				console.log(keycodel);
-				if(keycode === 76) {
-						   Mario.x = Mario.x + 20;
-						   Mario.Image.Src = marioturnright.png
-						   }
-						  
-	
+
     }
 
 
