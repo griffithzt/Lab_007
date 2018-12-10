@@ -55,6 +55,8 @@ function draw() {
 
 	/*
 	 * TODO: Draw Mario's initial image
+	 Mario.Image.Src="mario1.png";
+	
 	 */
 
 
@@ -98,7 +100,30 @@ function draw() {
 	 * which paints the new scene to the canvas.
 	 *
 	 * TODO: Add code to set Mario image to proper image whether L or R button pressed
+	 
+	 
+	   l = event || window.event;
+	   var keycode = l.charCode || l.keyCode;
+	   console.log(keycode);
+	   if(keycode === 76){
+	   	Mario.Image.src = "marioturnsleft.png";
+		ctx.drawImage(Mario.Image, Mario.x-20, Mario.y, Mario.w, Mario.h);
+		};
+		
+       r = event || window.event;
+	   var keycode = r.charCode || r.keyCode;
+	   console.log(keycode);
+	   if(keycode === 82){
+	   	Mario.Image.src = "marioturnsright.png";
+		ctx.drawImage(Mario.Image, Mario.x+20, Mario.y, Mario.w, Mario.h);
+		
+		};
+	 
+	 
 	 * TODO: Stop Mario if he runs out of room
+	 if (Mario.x >= ctx){
+	 Mario.x - Mario.x - 10;
+	 	 }
 	 *
 	 */
 	document.body.onkeydown = function(e) {  // listen for a key
@@ -122,13 +147,17 @@ function draw() {
     document.body.onkeyup = function(e) {  // listen for a key
 				l = event || window.event;
 				var keycodel = l.charCode || l.keyCode;
-				console.log(keycodel);
-				if(keycode === 76) {
-						   Mario.x = Mario.x + 20;
-						   Mario.Image.Src = marioturnright.png
+				console.log(keycode);
+				if(keycode == 76 && Mario.moving == "no") {
+						   Mario.timer = setInterval(render, Mario.timerInterval); 
+						   
 						   }
-						  
-	
+				r = event || window.event;
+	   			var keycode = r.charCode || r.keyCode;
+	   			console.log(keycode);
+				if(keycode == 82 && Mario.moving == "no") {
+						   Mario.timer = setInterval(render, Mario.timerInterval); 
+						   }
     }
 
 
@@ -136,7 +165,8 @@ function draw() {
      * TODO: Face Mario forward. Do not forget to draw the background image first
      */
     function faceForward() {
-
+	ctx.drawImage(bgImage, 0, 0);
+	Mario.Image.src="mario1.png"
     }
 	
 } // close draw() 
